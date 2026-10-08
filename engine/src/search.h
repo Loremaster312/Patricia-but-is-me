@@ -136,7 +136,7 @@ int eval(Position &position, ThreadInfo &thread_info) {
   int cur_m = our_side ? material_eval(position) : -material_eval(position);
   int deficit = s_m - cur_m;
   int tm = total_mat(position);
-
+   // Bonus 1
   if (tm > 3000 && deficit > 80) {
     if (our_side && eval > 100) {
       bonus1 = std::min(130, 25 + deficit / 9 + (eval - 100) / 25);
@@ -144,7 +144,7 @@ int eval(Position &position, ThreadInfo &thread_info) {
       bonus1 = -std::min(130, 25 + deficit / 9 + (-eval - 100) / 25);
     }
   }
-
+// Bonus 2
   if (s && tm > 3200) {
     int div = s < -400 ? 4 : s < -250 ? 7 : s < -90 ? 11 : 18;
     if (our_side) {
